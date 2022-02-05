@@ -1,0 +1,47 @@
+﻿<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<div class="tech-btm">
+   
+    <p>Teknoloji, yazılım ve diğer bloglar...</p>
+</div>
+<form action="/NewsLetter/SubscribeMail/" method="post">
+
+    <input type="email" placeholder="Email" id="mail" style="width:250px"  required="" name="mail">
+    <button class="btn btn-primary read-m" type="button" style="width:250px" onclick="subscribe();">Abone Ol</button>
+</form>
+<script>
+    function subscribe() {
+        var data = new Object();
+        if (document.getElementById('mail').value == "") {
+            Swal.fire('Email field cannot be empty')
+            return false;
+        }
+        data.Email = document.getElementById('mail').value;
+        $.ajax({
+            type: "POST",
+            url: '/NewsLetter/SubscribeMail',
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data != null) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Başarılı',
+                        text: 'E-posta bültenimize kaydoldunuz, sizi bilgilendireceğiz',
+                    })
+                    document.getElementById('mail').value = '';
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hata',
+                        text:' E - posta bültenimize kaydolurken hata oluştu.',
+                    })
+                    document.getElementById('mail').value = '';
+                }
+            }
+        });
+    }
+</script>
