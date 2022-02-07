@@ -11,11 +11,13 @@ namespace WebAPI.Controllers
     public class AboutController : Controller
     {
         AboutManager abm = new AboutManager(new EfAboutRepository());
+        [HttpGet]
         public IActionResult Index()
         {
             var values = abm.GetList();
             return View(values);
         }
+        [HttpGet]
         public PartialViewResult SocialMediaAbout()
         {
            

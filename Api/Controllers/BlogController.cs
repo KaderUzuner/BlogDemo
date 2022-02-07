@@ -20,11 +20,13 @@ namespace WebAPI.Controllers
         BlogManager bm = new BlogManager(new EfBlogRepository());
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
         Context c = new Context();
+        [HttpGet]
         public IActionResult Index()
         {
             var values = bm.GetBlogListWithCategory();
             return View(values);
         }
+        [HttpGet]
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;
@@ -84,13 +86,14 @@ namespace WebAPI.Controllers
             }
             return View();
         }
+         [HttpDelete]
         public IActionResult DeleteBlog(int id)
         {
             var blogvalue = bm.TGetById(id);
             bm.TDelete(blogvalue);
             return RedirectToAction("BlogListByWriter");
         } 
-        [HttpGet]
+        [HttpPut]
         public IActionResult EditBlog(int id)
         {
             var blogvalue = bm.TGetById(id);

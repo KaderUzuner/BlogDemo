@@ -33,12 +33,14 @@ namespace WebAPI.Areas.Admin.Controllers
             var jsonWriters = JsonConvert.SerializeObject(w);
             return Json(jsonWriters);
         }
+        [HttpDelete]
         public IActionResult DeleteWriter(int id)
         {
             var writer = writers.FirstOrDefault(x => x.Id == id);
             writers.Remove(writer);
             return Json(writer);
         }
+        [HttpPut]
         public IActionResult UpdateWriter(Writer w)
         {
             var writer = writers.FirstOrDefault(x => x.Id == w.Id);

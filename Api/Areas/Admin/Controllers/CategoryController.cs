@@ -49,6 +49,7 @@ namespace WebAPI.Areas.Admin.Controllers
             }
             return View();
         }
+        [HttpDelete]
         public IActionResult CategoryDelete(int id)
         {
             var value = cm.TGetById(id);
