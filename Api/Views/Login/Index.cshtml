@@ -1,4 +1,5 @@
-﻿
+﻿@model Writer 
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -8,21 +9,32 @@
         <h3 class="tittle">Giriş Yap</h3>
         <div class="row inner-sec">
             <div class="login p-5 bg-light mx-auto mw-100">
-                <form  method="post">
+                <form asp-controller="Login" asp-action="Index" method="post">
                     <div class="form-group">
-                        <label for="exampleInputEmail1 mb-2">Mail Adresi</label>
-                        <input type="email" class="form-control" name="WriterMail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
-                        
+                        <label asp-for="@Model.WriterMail" class="mb-2">Mail Adresi</label>
+                        <input asp-for="@Model.WriterMail" type="email" class="form-control" name="WriterMail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1 mb-2">Şifre</label>
-                        <input type="password" name="WriterPassword" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+                        <label asp-for="@Model.WriterPassword" class="mb-2">Şifre</label>
+                        <input asp-for="@Model.WriterPassword" type="password" name="WriterPassword" class="form-control" id="exampleInputPassword1" placeholder="" required="">
                     </div>
+
+                    @*<div class="form-group">
+            <label for="exampleInputEmail1 mb-2">Mail Adresi</label>
+            <input type="email" class="form-control" name="WriterMail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1 mb-2">Şifre</label>
+            <input type="password" name="WriterPassword" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+        </div>*@
                     <div class="form-check mb-2">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Beni hatırla</label>
                     </div>
                     <button type="submit" class="btn btn-primary submit mb-4">Giriş Aç</button>
+
                     <p><a href="/Register/Index">Bir hesabın yok mu ?</a></p>
                 </form>
             </div>

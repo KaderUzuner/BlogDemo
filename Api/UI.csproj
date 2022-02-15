@@ -27,6 +27,7 @@
     <ProjectReference Include="..\BusinessLayer\Business.csproj" />
     <ProjectReference Include="..\DataAccessLayer\DataAccess.csproj" />
     <ProjectReference Include="..\EntityLayer\Entity.csproj" />
+    <ProjectReference Include="..\WebApii\WebApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
